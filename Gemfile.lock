@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     similarweb (0.0.1)
+      faraday
 
 GEM
   remote: https://rubygems.org/
@@ -39,7 +40,6 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.5)
-  faraday
   pry
   rake
   rspec
