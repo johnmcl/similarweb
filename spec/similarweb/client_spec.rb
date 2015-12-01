@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Similarweb::Client do
+describe SimilarWeb::Client do
   before do
-    @client = Similarweb::Client.new(api_key: 'test-key')
+    @client = SimilarWeb::Client.new(api_key: 'test-key')
   end
 
   describe '.api_key' do
@@ -362,8 +362,8 @@ describe Similarweb::Client do
                 "Source": "Youtube",
                 "Value": 0.699753626365037
               },
-              { 
-                "Source": "Reddit", 
+              {
+                "Source": "Reddit",
                 "Value": 0.06447515408116457
               }
             ]
@@ -391,7 +391,7 @@ describe Similarweb::Client do
       end
     end
   end
-    
+
   describe '.tags' do
     before(:each) do
       body = <<-eos
@@ -400,9 +400,9 @@ describe Similarweb::Client do
               {
                 "Name": "disney",
                 "Score": 0.4535382529673987
-              }, 
+              },
               {
-                "Name": "kids", 
+                "Name": "kids",
                 "Score": 0.16695504510907133
               }
             ]

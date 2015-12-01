@@ -1,4 +1,4 @@
-# Similarweb
+# SimilarWeb
 
 Ruby client for [SimilarWeb API](https://developer.similarweb.com/)
 
@@ -19,7 +19,7 @@ Or install it yourself as:
 ## Usage
 
 ``` ruby
-client = Similarweb::Client.new(api_key: key)
+client = SimilarWeb::Client.new(api_key: key)
 traffic = client.traffic('disney.com')
 ```
 
@@ -28,7 +28,7 @@ traffic = client.traffic('disney.com')
 Returns a list of websites frequently visited by users of the given domain.
 
 ``` ruby
-client = Similarweb::Client.new(api_key: key)
+client = SimilarWeb::Client.new(api_key: key)
 also_visited = client.also_visited('disney.com')
 ```
 
@@ -37,7 +37,7 @@ also_visited = client.also_visited('disney.com')
 Will return a domain’s category and its global rank within its given category.
 
 ``` ruby
-client = Similarweb::Client.new(api_key: key)
+client = SimilarWeb::Client.new(api_key: key)
 category = client.category('disney.com')
 ```
 
@@ -46,7 +46,7 @@ category = client.category('disney.com')
 Will return a domain’s category and its global rank within its given category.
 
 ``` ruby
-client = Similarweb::Client.new(api_key: key)
+client = SimilarWeb::Client.new(api_key: key)
 category_rank = client.category_rank('disney.com')
 ```
 
@@ -55,7 +55,7 @@ category_rank = client.category_rank('disney.com')
 Returns the 10 leading sites that receive direct clicks from the given domain.
 
 ``` ruby
-client = Similarweb::Client.new(api_key: key)
+client = SimilarWeb::Client.new(api_key: key)
 destinations = client.destinations('disney.com')
 ```
 
@@ -64,7 +64,7 @@ destinations = client.destinations('disney.com')
 Provides three web engagement metrics: average page views, average time on site and bounce rate.
 
 ``` ruby
-client = Similarweb::Client.new(api_key: key)
+client = SimilarWeb::Client.new(api_key: key)
 engagement = client.engagement('disney.com')
 ```
 
@@ -73,7 +73,7 @@ engagement = client.engagement('disney.com')
 Returns the estimated number of visitors per domain.
 
 ``` ruby
-client = Similarweb::Client.new(api_key: key)
+client = SimilarWeb::Client.new(api_key: key)
 visits = client.estimated_visits('disney.com')
 ```
 
@@ -82,7 +82,7 @@ visits = client.estimated_visits('disney.com')
 Access three search metrics: paid/organic search distribution, 10 paid keywords, and 10 organic keywords.
 
 ``` ruby
-client = Similarweb::Client.new(api_key: key)
+client = SimilarWeb::Client.new(api_key: key)
 keywords = client.keywords('disney.com')
 ```
 
@@ -91,7 +91,7 @@ keywords = client.keywords('disney.com')
 Returns the 10 leading sites that direct clicks to the given domain.
 
 ``` ruby
-client = Similarweb::Client.new(api_key: key)
+client = SimilarWeb::Client.new(api_key: key)
 referrals = client.referrals('disney.com')
 ```
 
@@ -99,7 +99,7 @@ referrals = client.referrals('disney.com')
 
 Input a domain and receive an output of 20 similar websites and their similarity score.
 ``` ruby
-client = Similarweb::Client.new(api_key: key)
+client = SimilarWeb::Client.new(api_key: key)
 similar = client.similar_sites('disney.com')
 ```
 
@@ -108,7 +108,7 @@ similar = client.similar_sites('disney.com')
 Access the five leading social networks sending traffic to the given domain.
 
 ``` ruby
-client = Similarweb::Client.new(api_key: key)
+client = SimilarWeb::Client.new(api_key: key)
 social = client.social_referrals('disney.com')
 ```
 
@@ -117,7 +117,7 @@ social = client.social_referrals('disney.com')
 Returns 10 tags per domain based on semantic analysis, meta-data, anchor text and more.
 
 ``` ruby
-client = Similarweb::Client.new(api_key: key)
+client = SimilarWeb::Client.new(api_key: key)
 tags = client.tags('disney.com')
 ```
 
@@ -126,7 +126,7 @@ tags = client.tags('disney.com')
 Will return four web traffic metrics: global rank, country rank/traffic geography, traffic reach and traffic sources distribution.
 
 ``` ruby
-client = Similarweb::Client.new(api_key: key)
+client = SimilarWeb::Client.new(api_key: key)
 traffic = client.traffic('disney.com')
 ```
 

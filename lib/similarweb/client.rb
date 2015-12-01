@@ -1,4 +1,4 @@
-module Similarweb
+module SimilarWeb
   class Client
     include AlsoVisited
     include EstimatedVisits

@@ -17,5 +17,5 @@ require 'similarweb/traffic'
 require 'similarweb/client'
 
 
-module Similarweb
+module SimilarWeb
 end
