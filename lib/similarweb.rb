@@ -1,5 +1,6 @@
 require 'faraday'
 require 'json'
+require 'date'
 
 require 'similarweb/version'
 require 'similarweb/also_visited'
