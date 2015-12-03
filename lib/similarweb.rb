@@ -1,5 +1,6 @@
 require 'faraday'
 require 'json'
+require 'date'
 
 require 'similarweb/version'
 require 'similarweb/also_visited'
@@ -17,5 +18,5 @@ require 'similarweb/traffic'
 require 'similarweb/client'
 
 
-module Similarweb
+module SimilarWeb
 end

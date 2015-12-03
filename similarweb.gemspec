@@ -5,11 +5,11 @@ require 'similarweb/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "similarweb"
-  spec.version       = Similarweb::VERSION
+  spec.version       = SimilarWeb::VERSION
   spec.authors       = ["John McLaughlin", "Steven Lai"]
   spec.email         = ["j@yar.com", "mailto:lai.steven@gmail.com"]
-  spec.summary       = %q{Ruby wrapper for Similarweb API}
-  spec.description   = %q{Ruby wrapper for Similarweb API}
+  spec.summary       = %q{Ruby wrapper for SimilarWeb API}
+  spec.description   = %q{Ruby wrapper for SimilarWeb API}
   spec.homepage      = "http://github.com/johnmcl/similarweb"
   spec.license       = "MIT"
 
@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "webmock"
+  spec.add_development_dependency "vcr"
 
   spec.add_runtime_dependency "faraday"
 end
