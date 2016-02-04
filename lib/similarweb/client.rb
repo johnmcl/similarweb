@@ -28,5 +28,12 @@ module SimilarWeb
       @base_url ||= "http://api.similarweb.com/Site/"
     end
 
+    protected
+
+    def request(uri, params = {}, http_method = :get)
+      response = http_client.public_send(http_method, "#{uri}?Format=JSON&UserKey=#{api_key}")
+      JSON(response.body)
+    end
+
   end
 end
