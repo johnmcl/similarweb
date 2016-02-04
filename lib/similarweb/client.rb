@@ -12,20 +12,21 @@ module SimilarWeb
     include Referrals
     include Tags
     include Traffic
-    attr_accessor :api_key, :http_client
+
+    attr_reader :http_client
+
+    attr_accessor :api_key
 
     def initialize(args = {})
       args.each do |key, value|
         send(:"#{key}=", value)
       end
-      make_http_client!
+      @http_client = Faraday.new(:url => base_url)
     end
 
-    private
+    def base_url
+      @base_url ||= "http://api.similarweb.com/Site/"
+    end
 
-      def make_http_client!
-        base_url = "http://api.similarweb.com/Site/"
-        self.http_client = Faraday.new(:url => base_url)
-      end
   end
 end
