@@ -31,12 +31,18 @@ module SimilarWeb
     protected
 
     def request(uri, params = {}, http_method = :get)
-      parse_response(http_client.public_send(http_method, "#{uri}?Format=JSON&UserKey=#{api_key}"))
+      url = "#{uri}?Format=JSON&UserKey=#{api_key}&#{to_query(params)}"
+      parse_response(http_client.public_send(http_method, url))
     end
 
     def parse_response(response)
       JSON(response.body)
     end
+
+    def to_query(params)
+      params.map { |key, value| "#{key}=#{value}" }.join("&")
+    end
+
 
   end
 end
