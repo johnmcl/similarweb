@@ -31,7 +31,10 @@ module SimilarWeb
     protected
 
     def request(uri, params = {}, http_method = :get)
-      response = http_client.public_send(http_method, "#{uri}?Format=JSON&UserKey=#{api_key}")
+      parse_response(http_client.public_send(http_method, "#{uri}?Format=JSON&UserKey=#{api_key}"))
+    end
+
+    def parse_response(response)
       JSON(response.body)
     end
 
