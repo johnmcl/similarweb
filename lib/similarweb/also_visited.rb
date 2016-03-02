@@ -1,8 +1,7 @@
 module SimilarWeb
   module AlsoVisited
     def also_visited(domain)
-      response = self.http_client.get "#{domain}/v2/alsovisited?Format=JSON&UserKey=#{self.api_key}"
-      JSON(response.body)
+      request("#{domain}/v2/alsovisited")
     end
   end
 end
