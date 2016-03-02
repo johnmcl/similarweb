@@ -25,7 +25,7 @@ module SimilarWeb
     end
 
     def base_url
-      @base_url ||= "http://api.similarweb.com/Site/"
+      @base_url ||= "https://api.similarweb.com/Site/"
     end
 
     protected

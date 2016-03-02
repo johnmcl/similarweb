@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    similarweb (0.0.2)
+    similarweb (0.0.3)
       faraday
 
 GEM
@@ -47,6 +47,3 @@ DEPENDENCIES
   similarweb!
   vcr
   webmock
-
-BUNDLED WITH
-   1.10.6

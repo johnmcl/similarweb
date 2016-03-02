@@ -32,7 +32,7 @@ describe SimilarWeb::Client do
         }
       eos
 
-      stub_request(:get, "http://api.similarweb.com/Site/example.com/v2/leadingreferringsites?Format=JSON&UserKey=test-key").
+      stub_request(:get, "https://api.similarweb.com/Site/example.com/v2/leadingreferringsites?Format=JSON&UserKey=test-key").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
         to_return(:status => 200, :body => body, :headers => {})
 
@@ -80,7 +80,7 @@ describe SimilarWeb::Client do
         }
       eos
 
-      stub_request(:get, "http://api.similarweb.com/Site/example.com/v1/searchintelligence?Format=JSON&UserKey=test-key").
+      stub_request(:get, "https://api.similarweb.com/Site/example.com/v1/searchintelligence?Format=JSON&UserKey=test-key").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
         to_return(:status => 200, :body => body, :headers => {})
 
@@ -117,7 +117,7 @@ describe SimilarWeb::Client do
       prev_date = Date.today.prev_month.prev_month(3).strftime("%m-%Y")
       curr_date = Date.today.prev_month(2).strftime("%m-%Y")
 
-      stub_request(:get, "http://api.similarweb.com/Site/example.com/v1/visits?Format=JSON&UserKey=test-key&start=#{prev_date}&end=#{curr_date}").
+      stub_request(:get, "https://api.similarweb.com/Site/example.com/v1/visits?Format=JSON&UserKey=test-key&start=#{prev_date}&end=#{curr_date}").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
         to_return(:status => 200, :body => body, :headers => {})
 
@@ -140,7 +140,7 @@ describe SimilarWeb::Client do
         }
       eos
 
-      stub_request(:get, "http://api.similarweb.com/Site/example.com/v1/engagement?Format=JSON&UserKey=test-key").
+      stub_request(:get, "https://api.similarweb.com/Site/example.com/v1/engagement?Format=JSON&UserKey=test-key").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
         to_return(:status => 200, :body => body, :headers => {})
 
@@ -177,7 +177,7 @@ describe SimilarWeb::Client do
           }
       eos
 
-      stub_request(:get, "http://api.similarweb.com/Site/example.com/v2/leadingdestinationsites?Format=JSON&UserKey=test-key").
+      stub_request(:get, "https://api.similarweb.com/Site/example.com/v2/leadingdestinationsites?Format=JSON&UserKey=test-key").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
         to_return(:status => 200, :body => body, :headers => {})
 
@@ -197,7 +197,7 @@ describe SimilarWeb::Client do
         }
       eos
 
-      stub_request(:get, "http://api.similarweb.com/Site/example.com/v2/category?Format=JSON&UserKey=test-key").
+      stub_request(:get, "https://api.similarweb.com/Site/example.com/v2/category?Format=JSON&UserKey=test-key").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
         to_return(:status => 200, :body => body, :headers => {})
 
@@ -218,7 +218,7 @@ describe SimilarWeb::Client do
         }
       eos
 
-      stub_request(:get, "http://api.similarweb.com/Site/example.com/v2/CategoryRank?Format=JSON&UserKey=test-key").
+      stub_request(:get, "https://api.similarweb.com/Site/example.com/v2/CategoryRank?Format=JSON&UserKey=test-key").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
         to_return(:status => 200, :body => body, :headers => {})
 
@@ -247,7 +247,7 @@ describe SimilarWeb::Client do
           }
       eos
 
-      stub_request(:get, "http://api.similarweb.com/Site/example.com/v2/alsovisited?Format=JSON&UserKey=test-key").
+      stub_request(:get, "https://api.similarweb.com/Site/example.com/v2/alsovisited?Format=JSON&UserKey=test-key").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
         to_return(:status => 200, :body => body, :headers => {})
 
@@ -284,7 +284,7 @@ describe SimilarWeb::Client do
            }
       eos
 
-      stub_request(:get, "http://api.similarweb.com/Site/example.com/v1/traffic?Format=JSON&UserKey=test-key").
+      stub_request(:get, "https://api.similarweb.com/Site/example.com/v1/traffic?Format=JSON&UserKey=test-key").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
         to_return(:status => 200, :body => body, :headers => {})
 
@@ -333,7 +333,7 @@ describe SimilarWeb::Client do
         }
       eos
 
-      stub_request(:get, "http://api.similarweb.com/Site/disney.com/v2/similarsites?Format=JSON&UserKey=test-key").
+      stub_request(:get, "https://api.similarweb.com/Site/disney.com/v2/similarsites?Format=JSON&UserKey=test-key").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
         to_return(:status => 200, :body => body, :headers => {})
 
@@ -373,7 +373,7 @@ describe SimilarWeb::Client do
           }
       eos
 
-      stub_request(:get, "http://api.similarweb.com/Site/disney.com/v1/socialreferringsites?Format=JSON&UserKey=test-key").
+      stub_request(:get, "https://api.similarweb.com/Site/disney.com/v1/socialreferringsites?Format=JSON&UserKey=test-key").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
         to_return(:status => 200, :body => body, :headers => {})
 
@@ -412,7 +412,7 @@ describe SimilarWeb::Client do
           }
       eos
 
-      stub_request(:get, "http://api.similarweb.com/Site/disney.com/v2/tags?Format=JSON&UserKey=test-key").
+      stub_request(:get, "https://api.similarweb.com/Site/disney.com/v2/tags?Format=JSON&UserKey=test-key").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
         to_return(:status => 200, :body => body, :headers => {})
 
