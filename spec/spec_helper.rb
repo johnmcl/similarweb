@@ -20,5 +20,6 @@ end
 
 require 'webmock/rspec'
 require 'similarweb'
+require 'pry'
 
 WebMock.disable_net_connect!(allow_localhost: true)

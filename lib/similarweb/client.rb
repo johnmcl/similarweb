@@ -13,7 +13,7 @@ module SimilarWeb
     include Tags
     include Traffic
 
-    attr_reader :http_client
+    attr_reader :http_client_old, :http_client_new
 
     attr_accessor :api_key
 
@@ -41,7 +41,7 @@ module SimilarWeb
     end
 
     def request_new(uri, params = {}, http_method = :get)
-      url = "api_key=#{api_key}&#{to_query(params)}"
+      url = "#{uri}?api_key=#{api_key}&#{to_query(params)}"
       parse_response(http_client_new.public_send(http_method, url))
     end
 

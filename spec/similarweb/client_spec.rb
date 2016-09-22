@@ -110,12 +110,56 @@ describe SimilarWeb::Client do
     before(:each) do
       body = <<-eos
         {
-         "Visits": 81178601
+          "meta": {
+            "request": {
+              "granularity":"Daily",
+              "main_domain_only":false,
+              "domain":"example.com",
+              "start_date":"2016-01-01",
+              "end_date":"2016-01-31",
+              "country":"world"
+            },
+            "status":"Success",
+            "last_updated":"2016-08-31"
+          },
+          "visits": [
+            {"date":"2016-01-01","visits":1930.0},
+            {"date":"2016-01-02","visits":2549.0},
+            {"date":"2016-01-03","visits":2894.0},
+            {"date":"2016-01-04","visits":3186.0},
+            {"date":"2016-01-05","visits":3288.0},
+            {"date":"2016-01-06","visits":3488.0},
+            {"date":"2016-01-07","visits":3037.0},
+            {"date":"2016-01-08","visits":1897.0},
+            {"date":"2016-01-09","visits":1330.0},
+            {"date":"2016-01-10","visits":1738.0},
+            {"date":"2016-01-11","visits":2068.0},
+            {"date":"2016-01-12","visits":3452.0},
+            {"date":"2016-01-13","visits":3489.0},
+            {"date":"2016-01-14","visits":3618.0},
+            {"date":"2016-01-15","visits":3317.0},
+            {"date":"2016-01-16","visits":3039.0},
+            {"date":"2016-01-17","visits":3769.0},
+            {"date":"2016-01-18","visits":4206.0},
+            {"date":"2016-01-19","visits":3957.0},
+            {"date":"2016-01-20","visits":3884.0},
+            {"date":"2016-01-21","visits":3663.0},
+            {"date":"2016-01-22","visits":3609.0},
+            {"date":"2016-01-23","visits":3296.0},
+            {"date":"2016-01-24","visits":3594.0},
+            {"date":"2016-01-25","visits":4086.0},
+            {"date":"2016-01-26","visits":4122.0},
+            {"date":"2016-01-27","visits":3815.0},
+            {"date":"2016-01-28","visits":3923.0},
+            {"date":"2016-01-29","visits":3643.0},
+            {"date":"2016-01-30","visits":3242.0},
+            {"date":"2016-01-31","visits":4005.0}
+          ]
         }
       eos
 
-      prev_date = Date.today.prev_month.prev_month(3).strftime("%m-%Y")
-      curr_date = Date.today.prev_month(2).strftime("%m-%Y")
+      prev_date = Date.today.prev_month.strftime("%Y-%m")
+      curr_date = prev_date
 
       stub_request(:get, "https://api.similarweb.com/v1/website/example.com/total-traffic-and-engagement/visits?api_key=test-key&start_date=#{prev_date}&end_date=#{curr_date}&main_domain_only=false&granularity=daily").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
