@@ -117,7 +117,7 @@ describe SimilarWeb::Client do
       prev_date = Date.today.prev_month.prev_month(3).strftime("%m-%Y")
       curr_date = Date.today.prev_month(2).strftime("%m-%Y")
 
-      stub_request(:get, "https://api.similarweb.com/Site/example.com/v1/visits?Format=JSON&UserKey=test-key&start=#{prev_date}&end=#{curr_date}").
+      stub_request(:get, "https://api.similarweb.com/v1/website/example.com/total-traffic-and-engagement/visits?api_key=test-key&start_date=#{prev_date}&end_date=#{curr_date}&main_domain_only=false&granularity=daily").
         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
         to_return(:status => 200, :body => body, :headers => {})
 
@@ -125,7 +125,7 @@ describe SimilarWeb::Client do
     end
 
     it 'should have visits' do
-      expect( @estimated_visitors ).to have_key('Visits')
+      expect( @estimated_visitors ).to have_key('visits')
     end
   end
 

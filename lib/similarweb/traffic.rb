@@ -1,7 +1,7 @@
 module SimilarWeb
   module Traffic
     def traffic(domain)
-      request("#{domain}/v1/traffic")
+      request_old("#{domain}/v1/traffic")
     end
   end
 end

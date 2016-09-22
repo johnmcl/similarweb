@@ -1,7 +1,7 @@
 module SimilarWeb
   module Category
     def category(domain)
-      request("#{domain}/v2/category")
+      request_old("#{domain}/v2/category")
     end
   end
 end

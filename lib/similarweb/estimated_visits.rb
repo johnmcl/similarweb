@@ -2,10 +2,12 @@ module SimilarWeb
   module EstimatedVisits
     # API reference: https://developer.similarweb.com/estimated_visits_api
     def estimated_visits(domain, params = {})
-      params[:start] ||= Date.today.prev_month.prev_month(3).strftime("%m-%Y")
-      params[:end] ||= Date.today.prev_month(2).strftime("%m-%Y")
+      params[:start_date]       ||= Date.today.prev_month.strftime("%m-%Y")
+      params[:end_date]         ||= params[:start]
+      params[:granularity]      ||= 'daily'
+      params[:main_domain_only] ||= false
 
-      request("#{domain}/v1/visits", params)
+      request_new("#{domain}/total-traffic-and-engagement/visits", params)
     end
   end
 end
