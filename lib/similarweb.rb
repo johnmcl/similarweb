@@ -20,6 +20,8 @@ require 'similarweb/average_visit_duration'
 require 'similarweb/pages_per_visit'
 require 'similarweb/bounce_rate'
 require 'similarweb/global_rank'
+require 'similarweb/overview'
+require 'similarweb/overview_share'
 require 'similarweb/client'
 
 

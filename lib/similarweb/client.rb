@@ -17,6 +17,8 @@ module SimilarWeb
     include AverageVisitDuration
     include BounceRate
     include GlobalRank
+    include Overview
+    include OverviewShare
 
     attr_reader :http_client_old, :http_client_new
 
