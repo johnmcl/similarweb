@@ -12,6 +12,11 @@ module SimilarWeb
     include Referrals
     include Tags
     include Traffic
+    include Visits
+    include PagesPerVisit
+    include AverageVisitDuration
+    include BounceRate
+    include GlobalRank
 
     attr_reader :http_client_old, :http_client_new
 
@@ -41,6 +46,14 @@ module SimilarWeb
     end
 
     def request_new(uri, params = {}, http_method = :get)
+      params[:start_date]       ||= Date.today.prev_month
+      params[:end_date]         ||= params[:start_date]
+      params[:granularity]      ||= 'daily'
+      params[:main_domain_only] ||= false
+
+      params[:start_date] = convert_date(params[:start_date])
+      params[:end_date]   = convert_date(params[:end_date])
+
       url = "#{uri}?api_key=#{api_key}&#{to_query(params)}"
       parse_response(http_client_new.public_send(http_method, url))
     end
@@ -53,6 +66,14 @@ module SimilarWeb
       params.map { |key, value| "#{key}=#{value}" }.join("&")
     end
 
-
+    def convert_date(date)
+      if date.is_a? DateTime or date.is_a? Date or date.is_a? Time
+        date.strftime("%Y-%m")
+      elsif date.is_a? String
+        date
+      else
+        raise 'invalid date format'
+      end
+    end
   end
 end
