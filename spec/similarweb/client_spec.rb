@@ -129,6 +129,491 @@ describe SimilarWeb::Client do
     end
   end
 
+  describe '.visits' do
+    before(:each) do
+      body = <<-eos
+        {
+          "meta":{
+            "request":{
+              "granularity":"Monthly",
+              "main_domain_only":false,
+              "domain":"example.com",
+              "start_date":"2016-02-01",
+              "end_date":"2016-03-31",
+              "country":"world"
+            },
+            "status":"Success",
+            "last_updated":"2016-08-31"
+          },
+          "visits":[
+            {
+              "date":"2016-02-01",
+              "visits":120678.0
+            },
+            {
+              "date":"2016-03-01",
+              "visits":121999.0
+            }
+          ]
+        }
+      eos
+
+      prev_date = Date.new(2016, 2, 1).strftime("%Y-%m")
+      curr_date = Date.new(2016, 3, 1).strftime("%Y-%m")
+
+      stub_request(:get, "https://api.similarweb.com/v1/website/example.com/total-traffic-and-engagement/visits?api_key=test-key&start_date=#{prev_date}&end_date=#{curr_date}&main_domain_only=false&granularity=monthly").
+        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+        to_return(:status => 200, :body => body, :headers => {})
+
+      @visitors = @client.visits('example.com', granularity: 'monthly', start_date: prev_date, end_date: curr_date)
+    end
+
+    it 'should have visits' do
+      expect( @visitors ).to have_key('visits')
+    end
+  end
+
+  describe '.bounce_rate' do
+    before(:each) do
+      body = <<-eos
+        {
+          "meta":{
+            "request":{
+              "granularity":"Monthly",
+              "main_domain_only":false,
+              "domain":"example.com",
+              "start_date":"2016-02-01",
+              "end_date":"2016-03-31",
+              "country":"world"
+            },
+            "status":"Success",
+            "last_updated":"2016-08-31"
+          },
+          "bounce_rate":[
+            {
+              "date":"2016-02-01",
+              "bounce_rate":0.84267223520442835
+            },
+            {
+              "date":"2016-03-01",
+              "bounce_rate":0.84377740801154111
+            }
+          ]
+        }
+      eos
+
+      prev_date = Date.new(2016, 2, 1).strftime("%Y-%m")
+      curr_date = Date.new(2016, 3, 1).strftime("%Y-%m")
+
+      stub_request(:get, "https://api.similarweb.com/v1/website/example.com/total-traffic-and-engagement/bounce-rate?api_key=test-key&start_date=#{prev_date}&end_date=#{curr_date}&main_domain_only=false&granularity=monthly").
+        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+        to_return(:status => 200, :body => body, :headers => {})
+
+      @bounce_rate = @client.bounce_rate('example.com', granularity: 'monthly', start_date: prev_date, end_date: curr_date)
+    end
+
+    it 'should have bounce_rate' do
+      expect( @bounce_rate ).to have_key('bounce_rate')
+    end
+  end
+
+  describe '.pages_per_visit' do
+    before(:each) do
+      body = <<-eos
+        {
+          "meta":{
+            "request":{
+              "granularity":"Monthly",
+              "main_domain_only":false,
+              "domain":"example.com",
+              "start_date":"2016-02-01",
+              "end_date":"2016-03-31",
+              "country":"world"
+            },
+            "status":"Success",
+            "last_updated":"2016-08-31"
+          },
+          "pages_per_visit":[
+            {
+              "date":"2016-02-01",
+              "pages_per_visit":1.3114237889259022
+            },
+            {
+              "date":"2016-03-01",
+              "pages_per_visit":1.2965106271362883
+            }
+          ]
+        }
+      eos
+
+      prev_date = Date.new(2016, 2, 1).strftime("%Y-%m")
+      curr_date = Date.new(2016, 3, 1).strftime("%Y-%m")
+
+      stub_request(:get, "https://api.similarweb.com/v1/website/example.com/total-traffic-and-engagement/pages-per-visit?api_key=test-key&start_date=#{prev_date}&end_date=#{curr_date}&main_domain_only=false&granularity=monthly").
+        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+        to_return(:status => 200, :body => body, :headers => {})
+
+      @pages_per_visit = @client.pages_per_visit('example.com', granularity: 'monthly', start_date: prev_date, end_date: curr_date)
+    end
+
+    it 'should have pages_per_visit' do
+      expect( @pages_per_visit ).to have_key('pages_per_visit')
+    end
+  end
+
+  describe '.average_visit_duration' do
+    before(:each) do
+      body = <<-eos
+        {
+          "meta":{
+            "request":{
+              "granularity":"Monthly",
+              "main_domain_only":false,
+              "domain":"example.com",
+              "start_date":"2016-02-01",
+              "end_date":"2016-03-31",
+              "country":"world"
+            },
+            "status":"Success",
+            "last_updated":"2016-08-31"
+          },
+          "average_visit_duration":[
+            {
+              "date":"2016-02-01",
+              "average_visit_duration":47.9424750161587
+            },
+            {
+              "date":"2016-03-01",
+              "average_visit_duration":46.811064025114959
+            }
+          ]
+        }
+      eos
+
+      prev_date = Date.new(2016, 2, 1).strftime("%Y-%m")
+      curr_date = Date.new(2016, 3, 1).strftime("%Y-%m")
+
+      stub_request(:get, "https://api.similarweb.com/v1/website/example.com/total-traffic-and-engagement/average-visit-duration?api_key=test-key&start_date=#{prev_date}&end_date=#{curr_date}&main_domain_only=false&granularity=monthly").
+        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+        to_return(:status => 200, :body => body, :headers => {})
+
+      @average_visit_duration = @client.average_visit_duration('example.com', granularity: 'monthly', start_date: prev_date, end_date: curr_date)
+    end
+
+    it 'should have average_visit_duration' do
+      expect( @average_visit_duration ).to have_key('average_visit_duration')
+    end
+  end
+
+  describe '.global_rank' do
+    before(:each) do
+      body = <<-eos
+        {
+          "meta":{
+            "request":{
+              "domain":"example.com",
+              "start_date":"2016-02-01",
+              "end_date":"2016-03-31",
+              "country":"world"
+            },
+            "status":"Success",
+            "last_updated":"2016-08-31"
+          },
+          "global_rank":[
+            {
+              "date":"2016-02",
+              "global_rank":618201
+            },
+            {
+              "date":"2016-03",
+              "global_rank":547984
+            }
+          ]
+        }
+      eos
+
+      prev_date = Date.new(2016, 2, 1).strftime("%Y-%m")
+      curr_date = Date.new(2016, 3, 1).strftime("%Y-%m")
+
+      stub_request(:get, "https://api.similarweb.com/v1/website/example.com/global-rank/global-rank?api_key=test-key&start_date=#{prev_date}&end_date=#{curr_date}&main_domain_only=false&granularity=daily").
+        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+        to_return(:status => 200, :body => body, :headers => {})
+
+      @global_rank = @client.global_rank('example.com', start_date: prev_date, end_date: curr_date)
+    end
+
+    it 'should have global_rank' do
+      expect( @global_rank ).to have_key('global_rank')
+    end
+  end
+
+  describe '.overview' do
+    before(:each) do
+      body = <<-eos
+        {
+          "meta":{
+            "request":{
+              "main_domain_only":false,
+              "domain":"example.com",
+              "start_date":"2016-02-01",
+              "end_date":"2016-03-31",
+              "country":"world"
+            },
+            "status":"Success",
+            "last_updated":"2016-08-31"
+          },
+          "overview":[
+            {
+              "domain":"Google Search",
+              "source_type":"Search / Organic",
+              "share":0.41639403396202934
+            },
+            {
+              "domain":"Pinterest",
+              "source_type":"Social",
+              "share":0.20904855361218369
+            },
+            {
+              "domain":"Direct",
+              "source_type":"Direct",
+              "share":0.12829460352388516
+            },
+            {
+              "domain":"tots100.co.uk",
+              "source_type":"Referral",
+              "share":0.029866221929425649
+            },
+            {
+              "domain":"learnplayimagine.com",
+              "source_type":"Referral",
+              "share":0.02856538785145192
+            },
+            {
+              "domain":"Image Search",
+              "source_type":"Search / Organic",
+              "share":0.017063678768989714
+            },
+            {
+              "domain":"thehomeschoolscientist.com",
+              "source_type":"Referral",
+              "share":0.015675471806417891
+            },
+            {
+              "domain":"Facebook",
+              "source_type":"Social",
+              "share":0.015467820889190303
+            },
+            {
+              "domain":"Yahoo Search",
+              "source_type":"Search / Organic",
+              "share":0.014995301728721915
+            },
+            {
+              "domain":"mamaot.com",
+              "source_type":"Referral",
+              "share":0.01481799294889001
+            },
+            {
+              "domain":"handsonaswegrow.com",
+              "source_type":"Referral",
+              "share":0.014776675139542847
+            },
+            {
+              "domain":"Stumbleupon",
+              "source_type":"Social",
+              "share":0.011844168664330908
+            },
+            {
+              "domain":"preschoolpowolpackets.blogspot.com",
+              "source_type":"Referral",
+              "share":0.00855025734895521
+            },
+            {
+              "domain":"Mail",
+              "source_type":"Mail",
+              "share":0.0076222518241877146
+            },
+            {
+              "domain":"totschooling.net",
+              "source_type":"Referral",
+              "share":0.0040017129400708572
+            },
+            {
+              "domain":"livingmontessorinow.com",
+              "source_type":"Referral",
+              "share":0.0032454703688367084
+            },
+            {
+              "domain":"pleasantestthing.com",
+              "source_type":"Referral",
+              "share":0.0032454703688367084
+            },
+            {
+              "domain":"Bing Search",
+              "source_type":"Search / Organic",
+              "share":0.0031931284746566104
+            },
+            {
+              "domain":"theeducatorsspinonit.com",
+              "source_type":"Referral",
+              "share":0.0025722613956609968
+            },
+            {
+              "domain":"redtedart.com",
+              "source_type":"Referral",
+              "share":0.0024696654914816677
+            },
+            {
+              "domain":"notimeforflashcards.com",
+              "source_type":"Referral",
+              "share":0.0023572453911484786
+            }
+          ]
+        }
+      eos
+
+      prev_date = Date.new(2016, 2, 1).strftime("%Y-%m")
+      curr_date = Date.new(2016, 3, 1).strftime("%Y-%m")
+
+      stub_request(:get, "https://api.similarweb.com/v1/website/example.com/traffic-sources/overview?api_key=test-key&start_date=#{prev_date}&end_date=#{curr_date}&main_domain_only=false&granularity=daily").
+        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+        to_return(:status => 200, :body => body, :headers => {})
+
+      @overview = @client.overview('example.com', start_date: prev_date, end_date: curr_date)
+    end
+
+    it 'should have overview' do
+      expect( @overview ).to have_key('overview')
+    end
+  end
+
+  describe '.overview_share' do
+    before(:each) do
+      body = <<-eos
+        {
+          "meta":{
+            "request":{
+              "main_domain_only":false,
+              "domain":"example.com",
+              "start_date":"2016-02-01",
+              "end_date":"2016-03-31",
+              "country":"world"
+            },
+            "status":"Success",
+            "last_updated":"2016-08-31"
+          },
+          "visits":{
+            "example.com":[
+              {
+                "source_type":"Search",
+                "visits":[
+                  {
+                    "date":"2016-02-01",
+                    "organic":10390.544150384667,
+                    "paid":0.0
+                  },
+                  {
+                    "date":"2016-03-01",
+                    "organic":13725.010450884669,
+                    "paid":0.0
+                  }
+                ]
+              },
+              {
+                "source_type":"Social",
+                "visits":[
+                  {
+                    "date":"2016-02-01",
+                    "organic":6066.737915308483,
+                    "paid":0.0
+                  },
+                  {
+                    "date":"2016-03-01",
+                    "organic":6499.7884894634826,
+                    "paid":0.0
+                  }
+                ]
+              },
+              {
+                "source_type":"Mail",
+                "visits":[
+                  {
+                    "date":"2016-02-01",
+                    "organic":0.0,
+                    "paid":0.0
+                  },
+                  {
+                    "date":"2016-03-01",
+                    "organic":405.25050217592451,
+                    "paid":0.0
+                  }
+                ]
+              },
+              {
+                "source_type":"Display Ads",
+                "visits":[
+                  {
+                    "date":"2016-02-01",
+                    "organic":0.0,
+                    "paid":0.0
+                  },
+                  {
+                    "date":"2016-03-01",
+                    "organic":0.0,
+                    "paid":0.0
+                  }
+                ]
+              },
+              {
+                "source_type":"Direct",
+                "visits":[
+                  {
+                    "date":"2016-02-01",
+                    "organic":2621.0541695610132,
+                    "paid":0.0
+                  },
+                  {
+                    "date":"2016-03-01",
+                    "organic":4199.9553829613751,
+                    "paid":0.0
+                  }
+                ]
+              },
+              {
+                "source_type":"Referrals",
+                "visits":[
+                  {
+                    "date":"2016-02-01",
+                    "organic":5713.3347242354976,
+                    "paid":0.0
+                  },
+                  {
+                    "date":"2016-03-01",
+                    "organic":3545.0932385753604,
+                    "paid":0.0
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      eos
+
+      prev_date = Date.new(2016, 2, 1).strftime("%Y-%m")
+      curr_date = Date.new(2016, 3, 1).strftime("%Y-%m")
+
+      stub_request(:get, "https://api.similarweb.com/v1/website/example.com/traffic-sources/overview-share?api_key=test-key&start_date=#{prev_date}&end_date=#{curr_date}&main_domain_only=false&granularity=daily").
+        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+        to_return(:status => 200, :body => body, :headers => {})
+
+      @overview_share = @client.overview_share('example.com', start_date: prev_date, end_date: curr_date)
+    end
+
+    it 'should have visits' do
+      expect( @overview_share ).to have_key('visits')
+    end
+  end
+
   describe '.engagement' do
     before(:each) do
       body = <<-eos
